@@ -57,7 +57,13 @@ AppGenerator.prototype.versionHandle = function(){
 
 }
 
-
+/**
+ * 将 filePath 所指向的文件的内容中，匹配到正则表达式 exp 的内容替换为 value
+ * @param filePath
+ * @param exp
+ * @param value
+ * @private
+ */
 AppGenerator.prototype._replaceFileContent=function(filePath,exp,value){
     if(typeof exp === 'string'){
         exp = new RegExp(exp);

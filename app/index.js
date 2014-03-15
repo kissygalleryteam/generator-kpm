@@ -72,6 +72,10 @@ prt.askAuthor = function(){
         message: 'FlexCombo HTTP ReserveServer Port:',
 		default:'8080'
 	},{
+        name:'isSupportKissymini',
+        message:'Is support Kissymini(y/n)',
+        default:'n'
+  },{
         name:'isSupportISV',
         message:'Is support ISV(y/n):',
         default:'n'
@@ -85,6 +89,7 @@ prt.askAuthor = function(){
 		this.flexComboPort = props.flexComboPort;
 		this.reserveServerPort = props.reserveServerPort;
         this.isSupportISV = props.isSupportISV.toLowerCase()==='y'?true:false;
+        this.isSupportKissymini = props.isSupportKissymini.toLowerCase()==='y'?true:false;
         cb();
     }.bind(this));
 }
@@ -117,6 +122,13 @@ prt.isv = function(){
     if(this.isSupportISV){
         this.directory(path.join('isv','demo'),path.join(this.version,'demo'));
         this.template(path.join('isv','isv-adapter.js'), path.join(this.version,'isv-adapter.js'));
+    }
+}
+
+prt.kissmini=function(){
+    if(this.isSupportKissymini){
+        this.directory(path.join('mini','demo'),path.join(this.version,'demo'));
+        this.template(path.join('mini','mini.js'), path.join(this.version,'mini.js'));
     }
 }
 

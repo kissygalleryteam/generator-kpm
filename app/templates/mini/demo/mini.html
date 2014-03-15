@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title><%= comConfig.comName %>的demo</title>
+    <script src="http://g.tbcdn.cn/kissy/m/0.2.0/mini-full-min.js" charset="utf-8"></script>
+</head>
+<body>
+<h2><%= comConfig.comName %>的demo</h2>
+
+<script>
+    (function(S) {
+        var debug = ~location.search.indexOf('ks-debug');
+
+        if (debug) {
+            var srcPath = "../../";
+            S.config({
+                debug: debug,
+                packages:[
+                    {
+                        name:"gallery/<%= comConfig.name %>",
+                        path:srcPath,
+                        charset:"utf-8",
+                        ignorePackageNameInUri:true
+                    }
+                ]
+            });
+        }
+
+        S.use('gallery/<%= comConfig.name %>/<%= comConfig.version %>/mini', function (S, <%= comConfig.comName %>) {
+            new <%= comConfig.comName %>();
+        })
+    })(KISSY);
+</script>
+</body>
+</html>
