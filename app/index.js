@@ -86,10 +86,22 @@ prt.askAuthor = function(){
         this.email = props.email;
         this.tag = props.tag;
         this.githubName = props.githubName;
-		this.flexComboPort = props.flexComboPort;
-		this.reserveServerPort = props.reserveServerPort;
+        this.flexComboPort = props.flexComboPort;
+        this.reserveServerPort = props.reserveServerPort;
         this.isSupportISV = props.isSupportISV.toLowerCase()==='y'?true:false;
         this.isSupportKissymini = props.isSupportKissymini.toLowerCase()==='y'?true:false;
+
+        if(this.isSupportKissymini){
+          var tags ;
+          if(this.tag){
+            tags = this.tag.split(',');
+          }else{
+            tags = []
+          }
+          tags.push('kissy-mini')
+          this.tag=tags.join(',');
+        }
+
         cb();
     }.bind(this));
 }

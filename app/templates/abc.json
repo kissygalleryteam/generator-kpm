@@ -3,7 +3,7 @@
     "comName":"<%= comName%>",
     "version": "<%= version %>",
     "desc": "",
-    "tag":"<%= tag%>",
+    "tag":"<%= tag %>",
     "githubName":"<%= githubName%>",
     "author": {
         "name": "<%= author%>",
