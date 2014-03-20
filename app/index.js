@@ -138,9 +138,12 @@ prt.isv = function(){
 }
 
 prt.kissmini=function(){
+
+    this.directory(path.join('mini','demo'),path.join(this.version,'demo'));
     if(this.isSupportKissymini){
-        this.directory(path.join('mini','demo'),path.join(this.version,'demo'));
         this.template(path.join('mini','mini.js'), path.join(this.version,'mini.js'));
+    }else{
+        this.template(path.join('mini','mini-origin.js'), path.join(this.version,'mini.js'));
     }
 }
 
