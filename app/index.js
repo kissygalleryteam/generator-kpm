@@ -66,7 +66,7 @@ prt.askAuthor = function(){
     },{
         name: 'flexComboPort',
         message: 'FlexCombo Server Port:',
-		default:'81'
+		default:'8081'
 	},{
         name: 'reserveServerPort',
         message: 'FlexCombo HTTP ReserveServer Port:',
