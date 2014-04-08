@@ -42,6 +42,11 @@ module.exports = function(grunt) {
          */
         uglify: {
             options: {
+                compress:{
+                    global_defs:{"DEBUG":false},
+                    drop_console:true,
+                    dead_code:true
+                },
                 banner: '<%%= banner %>',
                 beautify: {
                     ascii_only: true
