@@ -74,10 +74,10 @@ module.exports = function(grunt) {
 			// https://speakerdeck.com/lijing00333/grunt-flexcombo
 			debug:{
 				options:{
-					proxyport:"<%= pkg.reserveServerPort %>",
+					proxyport:"<%%= pkg.reserveServerPort %>",
 					target:'<%%= pkg.version %>/build/',
 					urls:'/s/kissy/gallery/<%%= pkg.name %>/<%%= pkg.version %>',
-					port:"<%= pkg.flexComboPort %>",
+					port:"<%%= pkg.flexComboPort %>",
 					servlet:'?',
 					separator:',',
 					charset:'gbk', // 输出文件的编码
@@ -89,10 +89,10 @@ module.exports = function(grunt) {
 			},
             demo:{
                 options:{
-					proxyport:"<%= pkg.reserveServerPort %>",
+					proxyport:"<%%= pkg.reserveServerPort %>",
                     target:'<%%= pkg.version %>/',
                     urls:'/s/kissy/gallery/<%%= pkg.name %>/<%%= pkg.version %>',
-					port:"<%= pkg.flexComboPort %>",
+					port:"<%%= pkg.flexComboPort %>",
                     proxyHosts:['demo'],
                     servlet:'?',
                     separator:',',
