@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="gbk">
+    <title>父亲节快乐</title>
+    <meta name="data-spm" content="1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <script src="http://g.tbcdn.cn/kissy/k/1.4.2/seed-min.js?t=20140603" charset="utf-8"></script>
+    <link rel="stylesheet" href="http://g.tbcdn.cn/tb/global/2.8.6/global-min.css">
+    <script src="http://g.tbcdn.cn/??tb/global/2.8.6/global-min.js" charset="utf-8"></script>
+</head>
+<style>
+    .site-nav .site-nav-bd{
+        width: 1190px;
+    }
+    .content{
+        background: url(http://gtms02.alicdn.com/tps/i2/TB1PO79FpXXXXbebVXXMMjC4FXX-1190-800.png) 0 0 no-repeat;
+        height: 800px;
+        width: 1190px;
+        margin: 20px auto;
+        margin-bottom: 0;
+        position: relative;
+    }
+    .slides-wrapper{
+        width: 510px;
+        height: 510px;
+        margin-left: 354px;
+        padding-top: 204px;
+        position: relative;
+    }
+    .arrow{
+        background: url(http://gtms02.alicdn.com/tps/i2/TB1LK_WFXXXXXctbVXXcxJo0VXX-110-244.png) 0 0 no-repeat;
+        display: block;
+        position: absolute;
+        z-index: 1000;
+    }
+    .top-arrow{
+        width: 120px;
+        height: 120px;
+        top: 184px;
+        left: -20px;
+    }
+    .bottom-arrow{
+        background-position: 0 -120px;
+        width: 120px;
+        height: 140px;
+        right: -22px;
+        bottom: -26px;
+    }
+    .left-content{
+        position: absolute;
+        top: 240px;
+        left: 10px;
+        opacity: 0;
+    }
+    .right-content{
+        position: absolute;
+        top: 240px;
+        right: 10px;
+        opacity: 0;
+    }
+    .juhua{
+        position: absolute;
+        bottom: -100px;
+        right: 0;
+        z-index: 2000;
+        opacity: 0;
+    }
+    .share{
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        width: 200px;
+        height: 60px;
+    }
+    .tab-pannel .share-2{
+        position: absolute;
+        bottom: 130px;
+        right: 170px;
+        width: 150px;
+        height: 40px;
+    }
+</style>
+<body>
+<div id="J_SiteNav" class="site-nav">
+    <div id="J_SiteNavBd" class="site-nav-bd">
+        <ul id="J_SiteNavBdL" class="site-nav-bd-l" data-spm="1997487525"></ul>
+        <ul id="J_SiteNavBdR" class="site-nav-bd-r" data-spm="1997519997"></ul>
+    </div>
+</div>
+<script>
+    TB.Global.blacklist = ['fn-cart'];
+    TB.Global.init();
+</script>
+<div class="content">
+    <div class="slides-wrapper">
+        <div id="slides"><!--Slide控件开始-->
+            <div class="slides_container tab-content">
+                <div class="tab-pannel">
+                     <img src="http://gtms02.alicdn.com/tps/i2/TB1g6ThFpXXXXbLXVXX1sAeLpXX-500-500.jpg">
+                     <div class="share-2 J_Share"></div>
+                </div>
+                <div class="tab-pannel">
+                    <img src="http://gtms02.alicdn.com/tps/i2/TB1g6ThFpXXXXbLXVXX1sAeLpXX-500-500.jpg">
+                </div>
+            </div>
+
+        </div><!--Slide控件结束-->
+        <s class="arrow top-arrow"></s>
+        <s class="arrow bottom-arrow"></s>
+    </div>
+    <div class="left-content"><img src="http://gtms03.alicdn.com/tps/i3/TB1SIMZFFXXXXa4aXXXWJHjRXXX-301-643.png" ></div>
+    <div class="right-content"><img src="http://gtms02.alicdn.com/tps/i2/TB1QLg6FpXXXXXlaFXXLg29VVXX-282-553.png" ></div>
+    <div class="share J_Share"></div>
+    <div class="juhua"><img src="http://gtms02.alicdn.com/tps/i2/TB1Om46FpXXXXaIbFXXyg6tRVXX-591-226.png"></div>
+</div>
+
+<script>
+
+
+    (function(S){
+        S.use('node,gallery/slide/1.3/index',function(S,Node,Slide){
+            var $ = Node.all;
+            new Slide('slides',{
+                autoSlide:true,
+                effect:'fade',
+                timeout:2000,
+                speed:300,
+                selectedClass:'current'
+            });
+            $('.J_Share').on('click',function(){
+                var shareUrl = 'http://service.weibo.com/share/share.php';
+                var params = {
+                    url: 'http://weibo.com/p/1006061855335174/home?from=page_100606&mod=TAB#place',
+                    title: '#爸爸是万能的#世界上比淘宝更万能的是——爸爸！祝万能爸爸们，节日快乐！！',
+                    pic:'http://gtms01.alicdn.com/tps/i1/TB1DYqdXpXXXXaPbFXXQAsJYXXX-180-180.jpg'
+
+                };
+                params = S.param(params);
+                shareUrl = shareUrl + '?' + params;
+                location.href = shareUrl;
+            })
+
+            $('.left-content').animate({'top':140,'opacity':1},2,'easeOut',function(){
+                $('.right-content').animate({'top':140,'opacity':1},2,'easeOut',function(){
+                    $('.juhua').animate({'bottom':-12,'opacity':1},2,'easeOut',function(){
+
+                    })
+                })
+            })
+        })
+    })(KISSY)
+</script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
 	var task = grunt.task;
+    var SRC = 'src/';
     grunt.initConfig({
         // 配置文件，参考package.json配置方式，必须设置项是
         // name, version, author
@@ -25,17 +26,17 @@ module.exports = function(grunt) {
                         path: '../'
                     }
                 ],
-                map: [["<%%= pkg.name %>/", "gallery/<%%= pkg.name %>/<%%= pkg.version %>/"]]
+                depFilePath: 'build/mods.js',
+                fixModuleName:true,
+                map: [["<%%= pkg.name %>/src/", "gallery/<%%= pkg.name %>/<%%= pkg.version %>/"]]
             },
             main: {
                 files: [
                     {
-                        src: "./index.js",
-                        dest: "./build/index.js"
-                    },
-                    {
-                        src: "./mini.js",
-                        dest: "./build/mini.js"
+                        expand: true,
+                        cwd: SRC,
+                        src: [ './*.js' ],
+                        dest: 'build/'
                     }
                 ]
             }
@@ -76,7 +77,7 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
-						cwd:'./',
+						cwd:SRC,
                         src: ['**/*.less',
 							'!build/**/*.less',   
 							'!demo/**/*.less'],
@@ -90,7 +91,7 @@ module.exports = function(grunt) {
         	dist: {
         		files: [{
         			expand: true,
-					cwd:'./',
+					cwd:SRC,
 					src: ['**/*.scss',
 						'!build/**/*.scss',
 						'!demo/**/*.scss'],
@@ -105,7 +106,7 @@ module.exports = function(grunt) {
 				files:[
 					{
 						expand:true,
-						cwd:'./',
+						cwd:SRC,
 						src: [
 							'**/*.css',
 							'!build/**/*.css',
@@ -121,7 +122,6 @@ module.exports = function(grunt) {
         watch: {
             'all': {
                 files: [
-					'./**/*.js',
 					'./src/**/*.css',
 					'!./build/**/*'
 				],

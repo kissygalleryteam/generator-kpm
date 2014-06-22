@@ -90,6 +90,17 @@ module.exports = generator.generators.Base.extend({
                 tags.push('kissy-mini');
                 this.tag=tags.join(',');
             }
+            this.comConfig = {
+                "name": this.reposName,
+                "comName":this.comName,
+                "version": this.version,
+                "desc": "",
+                "tag":this.tag,
+                "author": {
+                    "name": this.author,
+                    "email": this.email
+                }
+            };
             cb();
         }.bind(this));
     },
@@ -102,8 +113,7 @@ module.exports = generator.generators.Base.extend({
         this.template('Gruntfile.js','Gruntfile.js');
     },
     mk:function(){
-        this.comConfig = comConfig(this);
-        var fold = ['demo','spec','build','plugin','guide','meta','test'];
+        var fold = ['demo','src','build','guide','test'];
         for(var i=0;i<fold.length;i++){
             this.directory(fold[i],fold[i]);
         }
