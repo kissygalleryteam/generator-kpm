@@ -2,21 +2,18 @@
 var util = require('util');
 var path = require('path');
 var fs = require('fs');
-var generator = require('abc-generator');
+var generator = require('yeoman-generator');
 var walk = require('walk');
 
-module.exports = AppGenerator
+module.exports = AppGenerator;
 
 function AppGenerator(args, options, config) {
-    generator.UINamedBase.apply(this, arguments);
+    generator.generators.Base.apply(this, arguments);
     this.version = args[0];
 }
 
 
-util.inherits(AppGenerator, generator.UINamedBase);
-
-
-
+util.inherits(AppGenerator, generator.Base);
 
 AppGenerator.prototype.comConfig = function(){
     var jsonFile = './config.json';
@@ -24,25 +21,19 @@ AppGenerator.prototype.comConfig = function(){
     this.comConfig = JSON.parse(sAbcJson);
 }
 
-
-AppGenerator.prototype.copy = function(){
-    var curVer = this.comConfig.version;
-    if(this.version == curVer) return false;
-    copyDir(curVer,this.version);
-}
-
 AppGenerator.prototype.versionHandle = function(){
     var replaceMap = {
-        './abc.json':'"version":\\s*"([0-9.]{3,})"',
-        './totoro-config.json':'"runner":"\\./([0-9.]{3,})/test/runner\\.html"',
-        './package.json':'"version":\\s*"([0-9.]{3,})\\.\\d"'
+        './config.json':'"version":\\s*"([0-9.]{3,})"',
+        './package.json':'"version":\\s*"([0-9.]{3,})"',
+        './Gruntfile.js':'"version":\\s*"([0-9.]{3,})"',
+        './README.md':'"version":\\s*"([0-9.]{3,})'
     };
     var name=this.comConfig.name;
     var currentVersion = this.comConfig.version;
     var version = this.version;
     var self=this;
-    ['test','demo','guide','meta'].forEach(function(dir){
-        walk.walk(path.join(version,dir)).on('file',function(dirPath,stat,next){
+    ['test','demo','guide','src','build'].forEach(function(dir){
+        walk.walk(path.join(dir)).on('file',function(dirPath,stat,next){
             var reg=new RegExp('gallery/'+ name +'/([0-9.]{3,})');
             var filePath = path.join(dirPath,stat.name);
             self._replaceFileContent(filePath,reg,version);
