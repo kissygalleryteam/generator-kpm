@@ -47,7 +47,7 @@ grunt debug
 
 之后绑定浏览器`8080`端口即可
 
-flexcombo的端口配置在`abc.json`中
+flexcombo的端口配置在`config.json`中
 
 可以修改gruntfile.js来自定义组件的构建。
 

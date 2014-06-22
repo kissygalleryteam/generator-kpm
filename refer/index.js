@@ -103,7 +103,7 @@ AppGenerator.prototype._initPath=function(oPath){
 
 
 function comConfig(that){
-    var jsonFile = './abc.json';
+    var jsonFile = './config.json';
     var sAbcJson = that.readFileAsString(jsonFile);
     return JSON.parse(sAbcJson);
 }

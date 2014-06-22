@@ -19,7 +19,7 @@ util.inherits(AppGenerator, generator.UINamedBase);
 
 
 AppGenerator.prototype.comConfig = function(){
-    var jsonFile = './abc.json';
+    var jsonFile = './config.json';
     var sAbcJson = this.readFileAsString(jsonFile);
     this.comConfig = JSON.parse(sAbcJson);
 }

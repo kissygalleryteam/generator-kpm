@@ -90,7 +90,7 @@ function AppGenerator(args, options, config) {
 util.inherits(AppGenerator, generator.UIBase);
 
 AppGenerator.prototype.comConfig = function() {
-    var jsonFile = './abc.json';
+    var jsonFile = './config.json';
     var sAbcJson = this.readFileAsString(jsonFile);
     this.comConfig = JSON.parse(sAbcJson);
 }
@@ -122,7 +122,7 @@ AppGenerator.prototype.ask = function() {
     this.prompt(prompts, function(props) {
         gitHubId = initGithubId ? initGithubId : props.name;
         if(!initGithubId){
-            this.writeJson('./abc.json', function(json) {
+            this.writeJson('./config.json', function(json) {
                 json.githubName = gitHubId;
                 return json;
             });            
