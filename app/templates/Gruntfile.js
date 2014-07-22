@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         // name作为gallery发布后的模块名
         // version是版本，也是发布目录
         // author必须是{name: "xxx", email: "xxx"}格式
-        pkg: grunt.file.readJSON('config.json'),
+        pkg: grunt.file.readJSON('package.json'),
         banner: '/*!build time : <%%= grunt.template.today("yyyy-mm-dd h:MM:ss TT") %>*/\n',
 
         // 对build目录进行清理
@@ -87,19 +87,6 @@ module.exports = function(grunt) {
                 ]
             }
         },
-        sass: {
-        	dist: {
-        		files: [{
-        			expand: true,
-					cwd:SRC,
-					src: ['**/*.scss',
-						'!build/**/*.scss',
-						'!demo/**/*.scss'],
-					dest: './build/',
-        			ext: '.scss.css'
-        		}]
-        	}
-        },
 		// 拷贝 CSS 文件
 		copy : {
 			main: {
@@ -162,11 +149,7 @@ module.exports = function(grunt) {
                     }
                 ]
             }
-        }<% if(isSupportISV){ %>,
-        isv_gallery:{
-            default_option:{}
         }
-        <% } %>
     });
 
     // 使用到的任务，可以增加其他任务
@@ -177,14 +160,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-less');
-	grunt.loadNpmTasks('grunt-sass');
-	<% if(isSupportISV){ %>
-        grunt.loadNpmTasks('grunt-isv-gallery');
-    <% } %>
 
 
 	grunt.registerTask('build', '默认构建任务', function() {
-		task.run(['clean:build', 'kmc','uglify', 'copy','less','sass','cssmin']);
+		task.run(['clean:build', 'kmc','uglify', 'copy','less','cssmin']);
 	});
 
     return grunt.registerTask('default', '',function(type){

@@ -1,13 +1,13 @@
 /**
- * @fileoverview <%= comConfig.desc %>
- * @author <%= comConfig.author.name %><<%= comConfig.author.email%>>
+ * @fileoverview
+ * @author
  * @module <%= comConfig.name %>
  **/
 KISSY.add(function (S, Node,Base) {
     var EMPTY = '';
     var $ = Node.all;
     /**
-     * <%= comConfig.desc %>
+     *
      * @class <%= comConfig.comName %>
      * @constructor
      * @extends Base

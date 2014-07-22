@@ -15,11 +15,11 @@ module.exports = generator.generators.Base.extend({
         this.reposName = getReposName(this);
         //组件名称
         this.comName = getComName(this.reposName);
-        if (fs.existsSync('config.json')) {
-            this.abcJSON = JSON.parse(this.readFileAsString('config.json'));
-        } else {
-            this.abcJSON = {}
-        }
+        this.comConfig = {
+            "name": this.reposName,
+            "comName":this.comName,
+            "version":this.version
+        };
         //结束后安装依赖并打印消息
         this.on('end',function(){
             this.installDependencies();
@@ -35,78 +35,8 @@ module.exports = generator.generators.Base.extend({
         this.log("欢迎使用kissy 组件包管理工具kpm\n");
         this.log("=====================");
     },
-    /**
-     * 问询
-     */
-    ask: function () {
-        var cb = this.async();
-
-        var author = {
-            name: 'kissy-team',
-            email: 'kissy-team@gmail.com'
-        };
-
-        if (this.abcJSON && this.abcJSON.author) {
-            var abcAuthor = this.abcJSON.author;
-            author.name = abcAuthor.name || 'kissy-team';
-            author.email = abcAuthor.email || 'kissy-team@gmail.com';
-        }
-        console.log('author请使用花名，email请使用内网邮箱，tag请使用中文（多个英文逗号隔开）');
-        var prompts = [{
-            name: 'author',
-            message: 'author of component:',
-            default: author.name
-        },{
-            name: 'email',
-            message: 'email of author:',
-            default: author.email
-        },{
-            name: 'tag',
-            message: 'tag of component:'
-        },{
-            name:'isSupportKissymini',
-            message:'Is support Kissymini(y/n)',
-            default:'n'
-        },{
-            name:'isSupportISV',
-            message:'Is support ISV(y/n):',
-            default:'n'
-        }];
-
-        this.prompt(prompts, function (props) {
-            this.author = props.author;
-            this.email = props.email;
-            this.tag = props.tag;
-            this.isSupportISV = props.isSupportISV.toLowerCase()==='y'?true:false;
-            this.isSupportKissymini = props.isSupportKissymini.toLowerCase()==='y'?true:false;
-
-            if(this.isSupportKissymini){
-                var tags ;
-                if(this.tag){
-                    tags = this.tag.split(',');
-                }else{
-                    tags = []
-                }
-                tags.push('kissy-mini');
-                this.tag=tags.join(',');
-            }
-            this.comConfig = {
-                "name": this.reposName,
-                "comName":this.comName,
-                "version": this.version,
-                "desc": "",
-                "tag":this.tag,
-                "author": {
-                    "name": this.author,
-                    "email": this.email
-                }
-            };
-            cb();
-        }.bind(this));
-    },
     copyFile:function(){
         this.copy('_.gitignore','.gitignore');
-        this.template('config.json','config.json');
         this.template('_package.json','package.json');
         this.template('README.md', 'README.md');
         this.template('totoro-config.json', 'totoro-config.json');
@@ -116,18 +46,6 @@ module.exports = generator.generators.Base.extend({
         var fold = ['demo','src','build','guide','test'];
         for(var i=0;i<fold.length;i++){
             this.directory(fold[i],fold[i]);
-        }
-    },
-    isv: function(){
-        if(this.isSupportISV){
-            this.directory(path.join('isv','demo'),path.join('isv','demo'));
-            this.template(path.join('isv','isv-adapter.js'), path.join('isv','isv-adapter.js'));
-        }
-    },
-    kissmini: function(){
-        this.directory(path.join('mini','demo'),path.join('mini','demo'));
-        if(this.isSupportKissymini){
-            this.template(path.join('mini','mini.js'), path.join('mini','mini.js'));
         }
     }
 });
@@ -150,15 +68,5 @@ function getComName(reposName){
         return $2.toUpperCase();
     });
     return comName;
-}
-/**
- * 获取组件配置
- * @param that
- * @returns {*}
- */
-function comConfig(that){
-    var jsonFile = './config.json';
-    var sAbcJson = that.readFileAsString(jsonFile);
-    return JSON.parse(sAbcJson);
 }
 
