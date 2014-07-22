@@ -11,6 +11,17 @@
 
 <script>
     var S = KISSY;
+    S.config({
+        packages:[
+            {
+                name:"kg",
+                path:"http://g.tbcdn.cn/kg/",
+                charset:"utf-8",
+                ignorePackageNameInUri:true
+            }
+        ]
+    });
+
     if (S.Config.debug) {
         var srcPath = "../src/";
         S.config({
