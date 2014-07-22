@@ -16,25 +16,23 @@ function AppGenerator(args, options, config) {
 util.inherits(AppGenerator, generator.Base);
 
 AppGenerator.prototype.comConfig = function(){
-    var jsonFile = './config.json';
+    var jsonFile = './package.json';
     var sAbcJson = this.readFileAsString(jsonFile);
     this.comConfig = JSON.parse(sAbcJson);
 }
 
 AppGenerator.prototype.versionHandle = function(){
     var replaceMap = {
-        './config.json':'"version":\\s*"([0-9.]{3,})"',
         './package.json':'"version":\\s*"([0-9.]{3,})"',
         './Gruntfile.js':'"version":\\s*"([0-9.]{3,})"',
         './README.md':'"version":\\s*"([0-9.]{3,})'
     };
     var name=this.comConfig.name;
-    var currentVersion = this.comConfig.version;
     var version = this.version;
     var self=this;
     ['test','demo','guide','src','build'].forEach(function(dir){
         walk.walk(path.join(dir)).on('file',function(dirPath,stat,next){
-            var reg=new RegExp('gallery/'+ name +'/([0-9.]{3,})');
+            var reg=new RegExp('kg/'+ name +'/([0-9.]{3,})');
             var filePath = path.join(dirPath,stat.name);
             self._replaceFileContent(filePath,reg,version);
             next();

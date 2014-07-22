@@ -39,11 +39,13 @@ module.exports = generator.generators.Base.extend({
      * 打印欢迎消息
      */
     hello: function () {
+        if(!this.reposName) return false;
         this.log("=====================\n");
         this.log("欢迎使用kissy 组件包管理工具kpm\n");
         this.log("=====================");
     },
     copyFile:function(){
+        if(!this.reposName) return false;
         this.copy('_.gitignore','.gitignore');
         this.template('_package.json','package.json');
         this.template('README.md', 'README.md');
@@ -51,6 +53,7 @@ module.exports = generator.generators.Base.extend({
         this.template('Gruntfile.js','Gruntfile.js');
     },
     mk:function(){
+        if(!this.reposName) return false;
         var fold = ['demo','src','build','guide','test'];
         for(var i=0;i<fold.length;i++){
             this.directory(fold[i],fold[i]);
