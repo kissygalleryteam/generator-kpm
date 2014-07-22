@@ -4,7 +4,7 @@
 
 ## 初始化组件
 		
-    S.use('gallery/<%= comConfig.name %>/<%= comConfig.version %>/index', function (S, <%= comConfig.comName %>) {
+    S.use('kg/<%= comConfig.name %>/<%= comConfig.version %>/index', function (S, <%= comConfig.comName %>) {
          var <%= comConfig.name %> = new <%= comConfig.comName %>();
     })
 

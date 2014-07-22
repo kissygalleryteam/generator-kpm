@@ -8,7 +8,15 @@ module.exports = generator.generators.Base.extend({
     constructor: function (args, options, config) {
         generator.generators.Base.apply(this, arguments);
         //组件版本号
-        this.version = this.arguments[0] || '1.0.0';
+        this.version = this.arguments[0];
+        if(!this.version){
+            console.log('缺少版本参数，demo：yo kpm 1.1.0');
+            return false;
+        }
+       if(!/^\d\.\d\.\d$/.test(this.version)){
+            console.log('版本号必须是三位数字，比如：1.6.0');
+           return false;
+       }
         this.cwd = options.env.cwd;
 
         //库地址
