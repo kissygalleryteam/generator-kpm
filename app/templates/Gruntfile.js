@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 	var task = grunt.task;
-    var SRC = 'src/';
+    var SRC = './';
     grunt.initConfig({
         // 配置文件，参考package.json配置方式，必须设置项是
         // name, version, author
@@ -28,14 +28,14 @@ module.exports = function(grunt) {
                 ],
                 depFilePath: 'mods.js',
                 fixModuleName:true,
-                map: [["<%%= pkg.name %>/src/", "kg/<%%= pkg.name %>/<%%= pkg.version %>/"]]
+                map: [["<%%= pkg.name %>/", "kg/<%%= pkg.name %>/<%%= pkg.version %>/"]]
             },
             main: {
                 files: [
                     {
                         expand: true,
                         cwd: SRC,
-                        src: [ './*.js' ],
+                        src: [ './*.js','!./Gruntfile.js' ],
                         dest: 'build/'
                     }
                 ]
@@ -79,10 +79,11 @@ module.exports = function(grunt) {
                         expand: true,
 						cwd:SRC,
                         src: ['**/*.less',
+                            '!node_modules/**/*.less',
 							'!build/**/*.less',   
 							'!demo/**/*.less'],
                         dest: './build/',
-                        ext: '.less.css'
+                        ext: '.css'
                     }
                 ]
             }
@@ -96,6 +97,7 @@ module.exports = function(grunt) {
 						cwd:SRC,
 						src: [
 							'**/*.css',
+                            '!node_modules/**/*.css',
 							'!build/**/*.css',
 							'!demo/**/*.css'
 						], 

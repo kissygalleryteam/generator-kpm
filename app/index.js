@@ -30,9 +30,7 @@ module.exports = generator.generators.Base.extend({
         };
         //结束后安装依赖并打印消息
         this.on('end',function(){
-            this.installDependencies();
-            this.log("组件目录和文件初始化完成！\n");
-            this.log("打包组件运行：grunt");
+
         })
     },
     /**
@@ -51,10 +49,11 @@ module.exports = generator.generators.Base.extend({
         this.template('README.md', 'README.md');
         this.template('totoro-config.json', 'totoro-config.json');
         this.template('Gruntfile.js','Gruntfile.js');
+        this.template('index.js','index.js');
     },
     mk:function(){
         if(!this.reposName) return false;
-        var fold = ['demo','src','build','guide','test'];
+        var fold = ['demo','build','guide','test','lib'];
         for(var i=0;i<fold.length;i++){
             this.directory(fold[i],fold[i]);
         }
