@@ -50,6 +50,7 @@ module.exports = generator.generators.Base.extend({
         this.template('totoro-config.json', 'totoro-config.json');
         this.template('Gruntfile.js','Gruntfile.js');
         this.template('index.js','index.js');
+        this.template('index.less','index.less');
     },
     mk:function(){
         if(!this.reposName) return false;
