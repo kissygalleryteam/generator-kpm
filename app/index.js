@@ -46,6 +46,7 @@ module.exports = generator.generators.Base.extend({
         if(!this.reposName) return false;
         this.copy('_.gitignore','.gitignore');
         this.template('_package.json','package.json');
+        this.template('bower.json','bower.json');
         this.template('README.md', 'README.md');
         this.template('totoro-config.json', 'totoro-config.json');
         this.template('Gruntfile.js','Gruntfile.js');

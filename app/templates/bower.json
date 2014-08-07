@@ -1,0 +1,12 @@
+{
+    "name": "<%= reposName %>",
+    "version": "<%= version %>",
+    "main": "index.js",
+    "ignore": [
+        "**/*",
+        "!index.js",
+        "!lib/**/*"
+    ],
+    "dependencies": {
+    }
+}

@@ -25,7 +25,8 @@ AppGenerator.prototype.versionHandle = function(){
     var replaceMap = {
         './package.json':'"version":\\s*"([0-9.]{3,})"',
         './Gruntfile.js':'"version":\\s*"([0-9.]{3,})"',
-        './README.md':'"version":\\s*"([0-9.]{3,})'
+        './README.md':'"version":\\s*"([0-9.]{3,})',
+        './bower.json':'"version":\\s*"([0-9.]{3,})'
     };
     var name=this.comConfig.name;
     var version = this.version;
