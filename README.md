@@ -18,10 +18,9 @@ npm install generator-kpm -g
 比如你的组件目录是offline，进入该目录，然后执行命令：
 
 ````sh
-yo kpm 1.0
+yo kpm 1.0.0
 ````
 
-默认版本为1.0。
 
 ### 打包组件
 
@@ -31,32 +30,12 @@ yo kpm 1.0
 grunt
 ````
 
-启动Demo调试服务：
-
-````sh
-grunt demo
-````
-
-之后浏览器绑定`8080`端口，访问`http://demo`即可
-
-启动Debug调试服务：
-
-````sh
-grunt debug
-````
-
-之后绑定浏览器`8080`端口即可
-
-flexcombo的端口配置在`config.json`中
-
-可以修改gruntfile.js来自定义组件的构建。
-
 ### 发布一个新的版本
 
 在组件目录下执行如下命令：
 
 ````sh
-yo kpm:version 1.1
+yo kpm:version 1.1.1
 ````
 
 ### 获取本组件 cdn refer
@@ -72,6 +51,12 @@ yo kpm:refer 1.0/index-min.js
 *  版本未输入的话，默认为当前版本
 
 ##changelog
+
+### 2.0.1
+* 增加bower配置
+
+### 2.0.0
+* 重构工具，去掉版本号目录
 
 ### 0.1.6
 * 添加 isv 支持
