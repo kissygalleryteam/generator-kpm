@@ -5,6 +5,7 @@
     "ignore": [
         "**/*",
         "!index.js",
+        "!index.css",
         "!lib/**/*"
     ],
     "dependencies": {
