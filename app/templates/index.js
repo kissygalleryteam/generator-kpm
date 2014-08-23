@@ -1,29 +1,23 @@
-/**
- * @fileoverview
- * @author
- * @module <%= comConfig.name %>
- **/
-KISSY.add(function (S, Node,Base) {
-    var EMPTY = '';
-    var $ = Node.all;
-    /**
-     *
-     * @class <%= comConfig.comName %>
-     * @constructor
-     * @extends Base
-     */
-    function <%= comConfig.comName %>(comConfig) {
+var $ = require('node').all;
+var Base = require('base');
+
+var <%= comConfig.comName %> = Base.extend({
+    initializer:function(){
         var self = this;
-        //调用父类构造函数
-        <%= comConfig.comName %>.superclass.constructor.call(self, comConfig);
+        var $target = self.get('$target');
     }
-    S.extend(<%= comConfig.comName %>, Base, /** @lends <%= comConfig.comName %>.prototype*/{
+},{
+    ATTRS:{
+        $target:{
+            value:'',
+            getter:function(v){
+                return $(v);
+            }
+        }
+    }
+});
 
-    }, {ATTRS : /** @lends <%= comConfig.comName %>*/{
-
-    }});
-    return <%= comConfig.comName %>;
-}, {requires:['node', 'base']});
+module.exports = <%= comConfig.comName %>;
 
 
 

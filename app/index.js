@@ -49,7 +49,7 @@ module.exports = generator.generators.Base.extend({
         this.template('bower.json','bower.json');
         this.template('README.md', 'README.md');
         this.template('totoro-config.json', 'totoro-config.json');
-        this.template('Gruntfile.js','Gruntfile.js');
+        this.template('gulpfile.js','gulpfile.js');
         this.template('index.js','index.js');
         this.template('index.less','index.less');
     },
