@@ -42,22 +42,39 @@ module.exports = generator.generators.Base.extend({
         this.log("欢迎使用kissy 组件包管理工具kpm\n");
         this.log("=====================");
     },
+    askAuthor : function(){
+        var cb = this.async();
+        //代码是否基于kissy5
+        var prompts = [{
+            name: 'kissy',
+            message: '组件基于的kissy版本（5.0.0/1.4.7）:',
+            default: '5.0.0'
+        }];
+
+        this.prompt(prompts, function (props) {
+            if(props.kissy != '5.0.0' && props.kissy != '1.4.7') props.kissy = '1.4.7';
+            this.kissy = props.kissy;
+            cb();
+        }.bind(this));
+    },
     copyFile:function(){
         if(!this.reposName) return false;
-        this.copy('_.gitignore','.gitignore');
-        this.template('_package.json','package.json');
-        this.template('bower.json','bower.json');
-        this.template('README.md', 'README.md');
-        this.template('totoro-config.json', 'totoro-config.json');
-        this.template('gulpfile.js','gulpfile.js');
-        this.template('index.js','index.js');
-        this.template('index.less','index.less');
+        var kissyDir = this.kissy+'/';
+        this.copy(kissyDir+'_.gitignore','.gitignore');
+        this.template(kissyDir+'_package.json','package.json');
+        this.template(kissyDir+'bower.json','bower.json');
+        this.template(kissyDir+'README.md', 'README.md');
+        this.template(kissyDir+'totoro-config.json', 'totoro-config.json');
+        this.template(kissyDir+'gulpfile.js','gulpfile.js');
+        this.template(kissyDir+'index.js','index.js');
+        this.template(kissyDir+'index.less','index.less');
     },
     mk:function(){
         if(!this.reposName) return false;
+        var kissyDir = this.kissy+'/';
         var fold = ['demo','build','guide','test','lib'];
         for(var i=0;i<fold.length;i++){
-            this.directory(fold[i],fold[i]);
+            this.directory(kissyDir+fold[i],fold[i]);
         }
     }
 });
