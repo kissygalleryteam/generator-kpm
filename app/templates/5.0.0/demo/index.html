@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title><%= comConfig.comName %>的demo</title>
+    <script src="http://g.alicdn.com/kissy/k/5.0.0/??seed.js,import-style.js" charset="utf-8"></script>
+</head>
+<body>
+<h2><%= comConfig.comName %>的demo</h2>
+
+<script>
+    var debugPath = "../build";
+    require.config({
+        packages:[
+            {
+                name:"kg/<%= comConfig.name %>/<%= comConfig.version %>",
+                path:debugPath
+            }
+        ]
+    });
+
+    require('kg/<%= comConfig.name %>/<%= comConfig.version %>/index', function (<%= comConfig.comName %>) {
+        new <%= comConfig.comName %>();
+    });
+</script>
+</body>
+</html>
+

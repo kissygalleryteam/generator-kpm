@@ -52,6 +52,9 @@ yo kpm:refer 1.0/index-min.js
 
 ##changelog
 
+### 5.0.0
+* 适配kissy5
+
 ### 2.0.4
 * 使用gulp编译打包
 * 模块使用cmd规范写法
