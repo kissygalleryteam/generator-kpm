@@ -30,7 +30,10 @@ module.exports = generator.generators.Base.extend({
         };
         //结束后安装依赖并打印消息
         this.on('end',function(){
-
+            this.log("\n");
+            this.log("1.运行npm install安装工具依赖\n");
+            this.log("2.运行gulp命令打包并开启静态服务器\n");
+            this.log("3.愉快地使用demo/index.html开启组件开发之旅\n");
         })
     },
     /**
@@ -47,12 +50,12 @@ module.exports = generator.generators.Base.extend({
         //代码是否基于kissy5
         var prompts = [{
             name: 'kissy',
-            message: '组件基于的kissy版本（5.0.0/1.4.7）:',
-            default: '5.0.0'
+            message: '组件基于的kissy版本（1.4.8/5.0.0）:',
+            default: '1.4.8'
         }];
 
         this.prompt(prompts, function (props) {
-            if(props.kissy != '5.0.0' && props.kissy != '1.4.7') props.kissy = '1.4.7';
+            if(props.kissy != '5.0.0' && props.kissy != '1.4.8') props.kissy = '1.4.8';
             this.kissy = props.kissy;
             cb();
         }.bind(this));
